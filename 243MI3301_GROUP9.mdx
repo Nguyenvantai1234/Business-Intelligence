@@ -1,0 +1,69 @@
+-- code order
+WITH 
+MEMBER [Measures].[Growth Rate] AS 
+IIF(
+    [Dim Time].[Year].CurrentMember.Level.Ordinal = 0
+    OR ISEMPTY([Measures].[Order Qty])
+    OR ISEMPTY(([Measures].[Order Qty], [Dim Time].[Year].CurrentMember.PrevMember))
+    OR ([Measures].[Order Qty], [Dim Time].[Year].CurrentMember.PrevMember) = 0,
+    NULL,
+    ROUND(
+        ([Measures].[Order Qty])
+        /
+        ([Measures].[Order Qty], [Dim Time].[Year].CurrentMember.PrevMember)
+    , 2)
+)
+
+SELECT 
+    {[Measures].[Order Qty], [Measures].[Growth Rate]} ON COLUMNS,
+    {
+        [Dim Time].[Year].[All],
+        [Dim Time].[Year].[2011],
+        [Dim Time].[Year].[2012],
+        [Dim Time].[Year].[2013],
+        [Dim Time].[Year].[2014]
+    } ON ROWS
+FROM 
+    [Pur_Department]
+
+
+-- Code vendor
+WITH 
+MEMBER [Measures].[Percent of Total] AS
+    ROUND(
+        ([Measures].[Line Total] * 1.0)
+        / ([Measures].[Line Total], [Dim Vendor].[Vendor Name].ALLMEMBERS.Item(0))
+        * 100
+    , 2)
+
+SELECT 
+{
+    [Measures].[Line Total], 
+    [Measures].[Percent of Total]
+} ON COLUMNS,
+{
+    TOPCOUNT(
+        [Dim Vendor].[Vendor Name].MEMBERS,
+        11,
+        [Measures].[Line Total]
+    )
+} ON ROWS
+FROM [Pur_Department]
+
+
+SELECT 
+    {
+        [Dim Time].[Year].[All],
+        [Dim Time].[Year].[2011],
+        [Dim Time].[Year].[2012],
+        [Dim Time].[Year].[2013],
+        [Dim Time].[Year].[2014]
+    } ON COLUMNS,
+    TOPCOUNT(
+        [Dim Vendor].[Vendor Name].MEMBERS,
+        21,
+        ([Measures].[Order Qty], [Dim Time].[Year].[All])
+    ) ON ROWS
+FROM [Pur_Department]
+WHERE ([Measures].[Order Qty])
+

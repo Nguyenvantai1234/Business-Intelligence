@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="THINKBOOK_BI_SQL.AdventureWorks2019"
+  DTS:DTSID="{99CC3D95-B586-43FA-B766-D3FCC07B1081}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=THINKBOOK\BI_SQL;Initial Catalog=AdventureWorks2019;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Purchasing Department-{99CC3D95-B586-43FA-B766-D3FCC07B1081}THINKBOOK\BI_SQL.AdventureWorks2019;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

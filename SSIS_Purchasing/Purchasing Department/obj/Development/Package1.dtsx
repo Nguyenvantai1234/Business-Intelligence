@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/24/2025 12:39:25 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="THINKBOOK"
+  DTS:CreatorName="THINKBOOK\LUONG CHI TRUNG"
+  DTS:DTSID="{DE1B6579-B05E-493E-B658-AE5C0658EDF8}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionGUID="{C052ED0E-30B5-4763-8E1E-4F8393C8B675}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables />
+</DTS:Executable>
